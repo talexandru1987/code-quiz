@@ -1,133 +1,128 @@
 /*style for the page body*/
 body {
-    margin: 0px;
-    background-color: #edf2f4;
-    font-family: "Josefin Sans", sans-serif;
-  }
-
+  margin: 0px;
+  background-color: #edf2f4;
+  font-family: "Josefin Sans", sans-serif;
+}
 
 /*style for the navigation bar*/
 .navigation-bar {
-    display: flex;
-    flex-direction: row;
-    background-color: #8d99ae;
-  }
-
-
-  .navigation-bar-item {
-      flex-grow: 2;
-      text-align: center;
-      padding: 20px;
-      border: solid 1px #2b2d42;
-      font-weight: bold;
-  }
-
-  .navigation-bar > div > a {
-      text-decoration: none;
-      color: #2b2d42;
-  }
-
-  .navigation-bar > div > a:hover {
-    color: #ef233c;
-    cursor: pointer;
-  }
-
-  /* Main content css*/
-
-  main {
-       display: flex;
-
-  }
-
-  .start-quiz {
-
-    margin: auto;
-
-  }
-
-  .start-quiz-item {
-    text-align: center;
-  }
-
-   /* button styles */
-  button {
-    align-items: center;
-    appearance: none;
-    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
-    border: 0;
-    border-radius: 6px;
-    box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: "JetBrains Mono",monospace;
-    height: 48px;
-    justify-content: center;
-    line-height: 1;
-    list-style: none;
-    overflow: hidden;
-    padding-left: 16px;
-    padding-right: 16px;
-    position: relative;
-    text-align: left;
-    text-decoration: none;
-    transition: box-shadow .15s,transform .15s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    white-space: nowrap;
-    will-change: box-shadow,transform;
-    font-size: 18px;
-  }
-  
-  button:focus {
-    box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-  }
-  
-  button:hover {
-    box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
-    transform: translateY(-2px);
-  }
-  
-  button:active {
-    box-shadow: #3c4fe0 0 3px 7px inset;
-    transform: translateY(2px);
-  }
-
- 
- 
-
-
-
-  /* mobile viewport styles */
-@media screen and (max-width: 900px) {
-
-    /* display as row on mobile*/
-    .navigation-bar {
-
-        flex-direction: column;
-
-      }
-    
-    .navigation-bar-item {
-        padding:  10px;
-    }
+  display: flex;
+  flex-direction: row;
+  background-color: #8d99ae;
 }
 
+.navigation-bar-item {
+  flex-grow: 2;
+  text-align: center;
+  padding: 20px;
+  border: solid 1px #2b2d42;
+  font-weight: bold;
+}
 
+.navigation-bar > div > a {
+  text-decoration: none;
+  color: #2b2d42;
+}
 
+.navigation-bar > div > a:hover {
+  color: #ef233c;
+  cursor: pointer;
+}
 
+/* Main content css*/
 
+main {
+  display: flex;
+  flex-direction: column;
+}
 
+/*center the content*/
+.start-quiz,
+.timer-section {
+  margin: auto;
+}
 
+.start-quiz-item {
+  text-align: center;
+}
 
+#timer {
+  padding: 20px;
+}
+#timer > p {
+  font-size: 30px;
+}
 
+/* button styles */
+button {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #5adaff 0,
+    #5468ff 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
 
+button:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
 
+button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
 
+button:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
 
+/*Timer title*/
 
+h2 {
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+}
 
+/* mobile viewport styles */
+@media screen and (max-width: 900px) {
+  /* display as row on mobile*/
+  .navigation-bar {
+    flex-direction: column;
+  }
 
-
+  .navigation-bar-item {
+    padding: 10px;
+  }
+}
