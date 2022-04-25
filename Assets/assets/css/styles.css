@@ -1,0 +1,51 @@
+/*style for the page body*/
+body {
+    margin: 0px;
+    background-color: #edf2f4;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+
+/*style for the navigation bar*/
+.navigation-bar {
+    display: flex;
+    flex-direction: row;
+    background-color: #8d99ae;
+  }
+
+
+  .navigation-bar-item {
+      flex-grow: 2;
+      text-align: center;
+      padding: 20px;
+      border: solid 1px #2b2d42;
+      font-weight: bold;
+  }
+
+  .navigation-bar > div > a {
+      text-decoration: none;
+      color: #2b2d42;
+  }
+
+  .navigation-bar > div > a:hover {
+    color: #ef233c;
+    cursor: pointer;
+  }
+
+
+
+
+  /* mobile viewport styles */
+@media screen and (max-width: 900px) {
+
+    /* display as row on mobile*/
+    .navigation-bar {
+
+        flex-direction: column;
+
+      }
+    
+    .navigation-bar-item {
+        padding:  10px;
+    }
+}
