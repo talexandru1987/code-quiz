@@ -1,7 +1,7 @@
 // global declarations
 const questions = [];
 let questionIndex = 0;
-let timerValue = 10 * 6;
+let timerValue = 10 * 6; //CHANGE THE HARDCODED 6!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 let quizComplete = false;
 
 // target the html elements

@@ -39,17 +39,16 @@ main {
 
 /*center the content*/
 .start-quiz,
-.timer-section {
+.timer-section,
+.question-section {
   margin: auto;
+  padding: 20px;
 }
 
 .start-quiz-item {
   text-align: center;
 }
 
-#timer {
-  padding: 20px;
-}
 #timer > p {
   font-size: 30px;
 }
@@ -113,6 +112,31 @@ h2 {
   font-size: 40px;
   text-align: center;
   font-weight: bold;
+}
+
+h2,
+#timer > p,
+.question-section-question > p,
+.quest-section-options > li,
+.question-section-decision > p {
+  padding: 10px;
+  margin: 0px;
+}
+
+/* question section styles*/
+
+.question-section-question,
+.quest-section-options,
+.question-section-decision > p {
+  font-size: 30px;
+}
+
+.quest-section-options {
+  list-style-type: lower-latin;
+}
+
+.question-section-decision > p {
+  text-align: center;
 }
 
 /* mobile viewport styles */
