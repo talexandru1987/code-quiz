@@ -139,6 +139,11 @@ h2,
   text-align: center;
 }
 
+.quest-section-options > li:hover {
+  cursor: pointer;
+  background-color: #bdbdbd;
+}
+
 /* mobile viewport styles */
 @media screen and (max-width: 900px) {
   /* display as row on mobile*/

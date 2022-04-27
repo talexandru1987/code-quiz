@@ -2,7 +2,7 @@
 const questions = {
   question1: {
     question: "Which of the following is a data type in javascript?",
-    options: ["string", "integrals", "functions", "actors"],
+    options: ["string", "div", "function", "actor"],
     answer: "string",
   },
   question2: {
@@ -13,7 +13,7 @@ const questions = {
   question3: {
     question: "Which of the following is used to declare aan id in CSS?",
     options: ["~", ".", "id:", "#"],
-    answer: "string",
+    answer: ".",
   },
 };
 
@@ -30,6 +30,7 @@ const startButton = document.getElementById("start-btn");
 const main = document.getElementById("main");
 const contentSection = document.getElementById("main-content");
 const questionSection = document.getElementById("question-content");
+const optionsSection = document.getElementById("options");
 
 const onLoad = () => {
   // initialise local storage
@@ -69,7 +70,14 @@ const startTimer = () => {
   }, 1000); // setInterval of 1000ms (1s)
 };
 
-const validateAnswer = () => {
+const validateAnswer = (event) => {
+  console.log("test");
+  //get the event target
+  const target = event.target;
+  console.log(target);
+  // get current target element (is the element the event handler attached to)
+  const currentTarget = event.currentTarget;
+  console.log(currentTarget);
   // get answer clicked from user
   // get the correct answer for question
   // compare the 2 answers
@@ -162,18 +170,24 @@ const renderQuestionSection = () => {
   const ul = document.createElement("ul");
   //set ul attribute
   ul.setAttribute("class", "quest-section-options");
+  //set ul id attribute
+  ul.setAttribute("id", "options");
   //append to document
   questionSection.append(ul);
 
   //create a var to target the object
-  let targetObjectOptions = questions[questionsList[questionIndex]]["options"];
+  let targetObjectOptions = questions[questionsList[questionIndex]];
 
   //append question and render to document
-  for (let i = 0; i < targetObjectOptions.length; i += 1) {
+  for (let i = 0; i < targetObjectOptions["options"].length; i += 1) {
     //create li element
     const li = document.createElement("li");
     //set li text
-    li.textContent = targetObjectOptions[i];
+    li.textContent = targetObjectOptions["options"][i];
+    //check if the correct answer
+    if (targetObjectOptions["options"][i] === targetObjectOptions["answer"]) {
+      li.setAttribute("id", "well-done");
+    }
     //append to doc
     ul.append(li);
   }
@@ -229,9 +243,12 @@ const startQuiz = () => {
 
   // render question section
   renderQuestionSection();
+
+  //add question event listener
+  optionsSection.addEventListener("click", console.log("Hello"));
 };
 
-// add event listeners
-startButton.addEventListener("click", startQuiz);
 // add document on load event listener
+window.addEventListener("load", onLoad);
 // add start button click event listener
+startButton.addEventListener("click", startQuiz);
