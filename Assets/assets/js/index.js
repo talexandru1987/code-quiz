@@ -1,13 +1,35 @@
 // global declarations
-const questions = [];
+const questions = {
+  question1: {
+    question: "Which of the following is a data type in javascript?",
+    options: ["string", "integrals", "functions", "actors"],
+    answer: "string",
+  },
+  question2: {
+    question: "Which of the following is an html element?",
+    options: ["string", "div", "functions", "const"],
+    answer: "div",
+  },
+  question3: {
+    question: "Which of the following is used to declare aan id in CSS?",
+    options: ["~", ".", "id:", "#"],
+    answer: "string",
+  },
+};
+
+//create the questions list
+const questionsList = Object.keys(questions);
+
+//dynamic variables
 let questionIndex = 0;
-let timerValue = 10 * 6; //CHANGE THE HARDCODED 6!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+let timerValue = 10 * questionsList.length;
 let quizComplete = false;
 
 // target the html elements
 const startButton = document.getElementById("start-btn");
 const main = document.getElementById("main");
 const contentSection = document.getElementById("main-content");
+const questionSection = document.getElementById("question-content");
 
 const onLoad = () => {
   // initialise local storage
@@ -15,7 +37,15 @@ const onLoad = () => {
   // if false then set highscores to empty array in LS
 };
 
-const removeStartSection = () => {};
+const removeStartSection = () => {
+  //remove the start content section
+  contentSection.remove();
+};
+
+const removeQuestionSection = () => {
+  //remove the section containing the question
+  questionSection.remove();
+};
 
 const startTimer = () => {
   console.log("start timer");
@@ -64,28 +94,25 @@ const handleFormSubmit = () => {
 };
 
 const renderTimerSection = () => {
-  console.log("render time section");
-  // use HTML as guide and build in JS
-
-  // create section
-  const section = document.createElement("section");
+  // create timerSection
+  const timerSection = document.createElement("section");
   // add class attribute
-  section.setAttribute("class", "timer-section");
-  main.append(section);
+  timerSection.setAttribute("class", "timer-section");
+  main.append(timerSection);
 
   // create h2
   const h2 = document.createElement("h2");
   // add content to h2
   h2.textContent = "Timer";
-  //append to section
-  section.append(h2);
+  //append to timerSection
+  timerSection.append(h2);
 
   // create div element
   const timerDiv = document.createElement("div");
   // add class attribute
   timerDiv.setAttribute("class", "timer");
-  //append to section
-  section.append(timerDiv);
+  //append to timerSection
+  timerSection.append(timerDiv);
 
   // create p element
   const paragraph = document.createElement("p");
@@ -105,10 +132,68 @@ const renderTimerSection = () => {
 };
 
 const renderQuestionSection = () => {
-  console.log("render question section");
-  // use HTML as guide and build in JS
+  //delete previous question
+  if (questionIndex > 0) {
+    removeQuestionSection();
+  }
+
+  // create question section
+  const questionSection = document.createElement("section");
+  // add class attribute
+  questionSection.setAttribute("class", "question-section");
+  // add id attribute
+  questionSection.setAttribute("id", "question-content");
   // append section to main
-  // add click event listener on #question-section
+  main.append(questionSection);
+  // create the question div
+  const questionDiv = document.createElement("div");
+  // add the attribute
+  questionDiv.setAttribute("class", "question-section-question");
+  //append to document
+  questionSection.append(questionDiv);
+
+  //create p element
+  const questionP = document.createElement("p");
+  //add the question value
+  questionP.textContent = questions[questionsList[questionIndex]]["question"];
+  //append to doc
+  questionDiv.append(questionP);
+  //create ul element
+  const ul = document.createElement("ul");
+  //set ul attribute
+  ul.setAttribute("class", "quest-section-options");
+  //append to document
+  questionSection.append(ul);
+
+  //create a var to target the object
+  let targetObjectOptions = questions[questionsList[questionIndex]]["options"];
+
+  //append question and render to document
+  for (let i = 0; i < targetObjectOptions.length; i += 1) {
+    //create li element
+    const li = document.createElement("li");
+    //set li text
+    li.textContent = targetObjectOptions[i];
+    //append to doc
+    ul.append(li);
+  }
+
+  // create the decision div
+  const decisionDiv = document.createElement("div");
+  // add the attribute
+  decisionDiv.setAttribute("class", "question-section-decision");
+  //append to document
+  questionSection.append(decisionDiv);
+
+  //create p element
+  const decisionP = document.createElement("p");
+  //sett the p text
+  decisionP.textContent = "Wrong!"; /// hardcoded replace with variable!!!!!!!!!!!
+  //append to document
+  decisionDiv.append(decisionP);
+
+  //increment the index
+  questionIndex += 1;
 };
 
 const renderGameOver = () => {
@@ -134,7 +219,7 @@ const renderQuizCompleteSection = () => {
 
 const startQuiz = () => {
   // remove start section
-  contentSection.remove();
+  removeStartSection();
 
   // start timer
   startTimer();
