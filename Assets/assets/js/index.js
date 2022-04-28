@@ -29,8 +29,6 @@ let quizComplete = false;
 const startButton = document.getElementById("start-btn");
 const main = document.getElementById("main");
 const contentSection = document.getElementById("main-content");
-const questionSection = document.getElementById("question-content");
-const optionsSection = document.getElementById("options");
 
 const onLoad = () => {
   // initialise local storage
@@ -44,6 +42,8 @@ const removeStartSection = () => {
 };
 
 const removeQuestionSection = () => {
+  //target the section element
+  const questionSection = document.getElementById("question-content");
   //remove the section containing the question
   questionSection.remove();
 };
@@ -71,22 +71,44 @@ const startTimer = () => {
 };
 
 const validateAnswer = (event) => {
-  console.log("test");
   //get the event target
   const target = event.target;
-  console.log(target);
-  // get current target element (is the element the event handler attached to)
-  const currentTarget = event.currentTarget;
-  console.log(currentTarget);
-  // get answer clicked from user
-  // get the correct answer for question
-  // compare the 2 answers
+  // get answer clicked from user and get id
+  const userAnswer = target.id;
+  //target the result p
+  const resultAnswer = document.getElementById("decision-result");
   // if incorrect subtract 5 seconds from timerValue
   // if incorrect render error alert with message and status
   // if correct render success alert with message and status
+  // check if id exists
+  if (userAnswer) {
+    //generate text
+    resultAnswer.textContent = "Well Done!";
+    //change text color
+    resultAnswer.style.color = "#70e000";
+  } else {
+    //generate text
+    resultAnswer.textContent = "Wrong Answer!";
+    //change text color
+    resultAnswer.style.color = "#d00000";
+    //decrement time value
+    timerValue -= 5;
+  }
+
+  //target the element containing the event listener
+  const eventSection = document.getElementById("options");
+  //stop the event listener for the question
+  eventSection.removeEventListener("click", validateAnswer);
   // set timeout for 500ms and then go to next question
+  const myTimeout = setTimeout(renderQuestionSection, 500);
+
   // if question is last question set quizComplete to true and then render form
+  if (questionIndex === questionsList.length) {
+    //stop the counter
+    clearInterval(timeInterval);
+  }
   // if question is not last question then increment question index and render next question
+  questionIndex += 1;
 };
 
 const handleFormSubmit = () => {
@@ -201,13 +223,15 @@ const renderQuestionSection = () => {
 
   //create p element
   const decisionP = document.createElement("p");
-  //sett the p text
-  decisionP.textContent = "Wrong!"; /// hardcoded replace with variable!!!!!!!!!!!
+  // add the attribute
+  decisionP.setAttribute("id", "decision-result");
   //append to document
   decisionDiv.append(decisionP);
 
-  //increment the index
-  questionIndex += 1;
+  //target the options section
+  const optionsSection = document.getElementById("options");
+  //add question event listener
+  optionsSection.addEventListener("click", validateAnswer);
 };
 
 const renderGameOver = () => {
@@ -243,9 +267,6 @@ const startQuiz = () => {
 
   // render question section
   renderQuestionSection();
-
-  //add question event listener
-  optionsSection.addEventListener("click", console.log("Hello"));
 };
 
 // add document on load event listener
