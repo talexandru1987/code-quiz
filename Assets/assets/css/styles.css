@@ -40,7 +40,8 @@ main {
 /*center the content*/
 .start-quiz,
 .timer-section,
-.question-section {
+.question-section,
+.game-over {
   margin: auto;
   padding: 20px;
 }
@@ -118,7 +119,8 @@ h2,
 #timer > p,
 .question-section-question > p,
 .quest-section-options > li,
-.question-section-decision > p {
+.question-section-decision > p,
+.game-over-response {
   padding: 10px;
   margin: 0px;
 }
@@ -135,7 +137,8 @@ h2,
   list-style-type: lower-latin;
 }
 
-.question-section-decision > p {
+.question-section-decision > p,
+.game-over-response > p {
   text-align: center;
 }
 
