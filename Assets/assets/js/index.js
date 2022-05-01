@@ -19,12 +19,17 @@ const questions = {
 
 //create the questions list
 const questionsList = Object.keys(questions);
+
+//timeout variable
+let myTimeout;
+
 //time interval function variable
 let timeInterval;
 //dynamic variables
 let questionIndex = 0;
 let timerValue = 10 * questionsList.length;
 let quizComplete = false;
+let correctAnswers = 0;
 
 // target the html elements
 const startButton = document.getElementById("start-btn");
@@ -32,9 +37,9 @@ const main = document.getElementById("main");
 const contentSection = document.getElementById("main-content");
 
 const onLoad = () => {
-  // initialise local storage
-  // check if highscores exists in LS
-  // if false then set highscores to empty array in LS
+  // initialize local storage
+  // check if high scores exists in LS
+  // if false then set high scores to empty array in LS
 };
 
 const removeStartSection = () => {
@@ -68,7 +73,7 @@ const startTimer = () => {
       //stop timer
       clearInterval(timeInterval);
       //render game over
-      renderGameOver();
+      myTimeout = setTimeout(renderGameOver, 500);
     }
     // if true render game over
   }, 1000); // setInterval of 1000ms (1s)
@@ -86,6 +91,7 @@ const validateAnswer = (event) => {
   // if correct render success alert with message and status
   // check if id exists
   if (userAnswer) {
+    correctAnswers += 1;
     renderAlert("Well Done!", true);
   } else {
     renderAlert("Wrong Answer!", false);
@@ -101,7 +107,7 @@ const validateAnswer = (event) => {
   //if not last question
   if (questionIndex < questionsList.length) {
     // set timeout for 500ms and then go to next question
-    const myTimeout = setTimeout(renderQuestionSection, 500);
+    myTimeout = setTimeout(renderQuestionSection, 500);
   }
 
   // if question is last question set quizComplete to true and then render form
@@ -109,7 +115,7 @@ const validateAnswer = (event) => {
     //stop timer
     clearInterval(timeInterval);
     //render game over
-    renderGameOver();
+    myTimeout = setTimeout(renderGameOver, 500);
   }
 };
 
@@ -301,6 +307,95 @@ const renderForm = () => {
   //remove the element from doc
   timerSection.remove();
   // use HTML as guide and build in JS
+  // create form section
+  const formSection = document.createElement("section");
+  // add class attribute
+  formSection.setAttribute("class", "form-section");
+  // append section to main
+  main.append(formSection);
+
+  // create form
+  const aForm = document.createElement("form");
+  // add attribute
+  aForm.setAttribute("action", "submit");
+  //append to section
+  formSection.append(aForm);
+
+  //create score text div
+  const scoreDiv = document.createElement("div");
+  // add class attribute
+  scoreDiv.setAttribute("class", "form-section-score");
+  // set the text content
+  scoreDiv.textContent =
+    "You managed to score " +
+    correctAnswers +
+    " correct answers in " +
+    (10 * questionsList.length - timerValue) +
+    " seconds. Please enter your name bellow to add your score to the high scores list!";
+  //append to form
+  aForm.append(scoreDiv);
+
+  //create input div
+  const inputDiv = document.createElement("div");
+  // add class attribute
+  inputDiv.setAttribute("class", "form-section-input");
+  //append div
+  aForm.append(inputDiv);
+
+  //create div for input field
+  const inputContainerDiv = document.createElement("div");
+  // add class attribute
+  inputContainerDiv.setAttribute("class", "form-section-input-container");
+  //append div
+  inputDiv.append(inputContainerDiv);
+
+  //create the input label
+  const inputLabel = document.createElement("label");
+  // add class attribute
+  inputLabel.setAttribute("for", "name");
+  //set text
+  inputLabel.textContent = "Name";
+  //append div
+  inputContainerDiv.append(inputLabel);
+
+  //create the input
+  const inputBox = document.createElement("input");
+  // add class attributes
+  inputBox.setAttribute("type", "text");
+  inputBox.setAttribute("name", "name");
+  inputBox.setAttribute("id", "full-name");
+  //append div
+  inputContainerDiv.append(inputBox);
+
+  //create submit button div
+  const submitDiv = document.createElement("div");
+  // add class attribute
+  submitDiv.setAttribute("class", "submit");
+  //append div
+  inputDiv.append(submitDiv);
+
+  //create the submit button
+  const submitButton = document.createElement("input");
+  // add class attributes
+  submitButton.setAttribute("id", "submit-btn");
+  submitButton.setAttribute("type", "submit");
+  submitButton.setAttribute("value", "Submit");
+  //append button
+  submitDiv.append(submitButton);
+
+  //create the form answer div
+  const submitAnswerDiv = document.createElement("div");
+  //append to doc
+  inputDiv.append(submitAnswerDiv);
+
+  //create the p element
+  const formSubmitP = document.createElement("p");
+  // add class attributes
+  formSubmitP.setAttribute("class", "submit-result");
+  formSubmitP.setAttribute("id", "submit-result");
+  //append to doc
+  submitAnswerDiv.append(formSubmitP);
+
   // append section to main
   // add submit event handler to form
 };
