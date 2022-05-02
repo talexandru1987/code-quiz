@@ -62,8 +62,6 @@ const removeQuestionSection = () => {
 };
 
 const startTimer = () => {
-  console.log("start timer");
-
   // declare function to execute every 1 sec
   timeInterval = setInterval(function () {
     // decrement timer value
@@ -72,7 +70,6 @@ const startTimer = () => {
     const timeValue = document.getElementById("time-span");
     timeValue.textContent = timerValue;
 
-    console.log(timerValue);
     // if quizComplete is true then stop timer
 
     // check if timer reaches 0
@@ -259,7 +256,6 @@ const renderGameOver = () => {
   // use HTML as guide and build in JS
   // append section to main
   removeQuestionSection();
-  console.log("game over");
 
   // create question section
   const responseSection = document.createElement("section");
@@ -354,7 +350,6 @@ const renderForm = () => {
   const recordTime = 10 * questionsList.length - timerValue;
   // set the text content
   scoreDiv.textContent = `You managed to score ${correctAnswers} answers in ${recordTime} seconds. Please enter your full name bellow to add your score to the high score list! `;
-
   //append to form
   aForm.append(scoreDiv);
 
@@ -434,7 +429,6 @@ const renderForm = () => {
 };
 
 const highScoresSection = () => {
-  console.log("high score");
   // use HTML as guide and build in JS
   // append section to main
 };

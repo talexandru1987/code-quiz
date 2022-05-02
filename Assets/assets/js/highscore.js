@@ -2,15 +2,10 @@
 const documentTable = document.getElementById("high-score-table");
 
 const onLoad = () => {
-  console.log("high score page rendered");
-
   //get the high score object
   const storeItems = JSON.parse(localStorage.getItem("highscore"));
-  console.log(storeItems);
-  console.log(storeItems[1]["name"]);
 
   for (let i = 0; i < storeItems.length; i += 1) {
-    console.log(i);
     //create the tr element
     let trElement = document.createElement("tr");
     // add class attribute
