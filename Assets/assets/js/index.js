@@ -145,7 +145,7 @@ const handleFormSubmit = (event) => {
 
     //get the high score object
     const storeItems = JSON.parse(localStorage.getItem("highscore"));
-    //ad a new object
+    //add a new object
     storeItems.unshift(scoreObject);
 
     //save in local storage
@@ -350,13 +350,11 @@ const renderForm = () => {
   const scoreDiv = document.createElement("div");
   // add class attribute
   scoreDiv.setAttribute("class", "form-section-score");
+  //the time in which the questions were completed
+  const recordTime = 10 * questionsList.length - timerValue;
   // set the text content
-  scoreDiv.textContent =
-    "You managed to score " +
-    correctAnswers +
-    " correct answers in " +
-    (10 * questionsList.length - timerValue) +
-    " seconds. Please enter your name bellow to add your score to the high scores list!";
+  scoreDiv.textContent = `You managed to score ${correctAnswers} answers in ${recordTime} seconds. Please enter your full name bellow to add your score to the high score list! `;
+
   //append to form
   aForm.append(scoreDiv);
 
