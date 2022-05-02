@@ -37,7 +37,7 @@
         </div>
 
         <div class="navigation-bar-item">
-          <a href="./highscore.html">High Scores</a>
+          <a id="high-score" href="./highscore.html">High Scores</a>
         </div>
       </nav>
     </header>
@@ -95,10 +95,12 @@
             <label for="name">Name:</label>
             <input type="text" name="name" id="full-name" />
             <div class="submit">
-              <input id="submit-btn" type="submit" value="Submit" />
+              <a href="./highscore.html">
+                <input id="submit-btn" type="submit" value="Submit" />
+              </a>
             </div>
             <div>
-              <p class="submit-result">result</p>
+              <p class="submit-result" id="submit-result">result</p>
             </div>
           </div>
         </form>

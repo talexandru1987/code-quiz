@@ -35,11 +35,18 @@ let correctAnswers = 0;
 const startButton = document.getElementById("start-btn");
 const main = document.getElementById("main");
 const contentSection = document.getElementById("main-content");
+const highScore = document.getElementById("high-score");
+
+//local storage variables
+let storeAnswers = [];
 
 const onLoad = () => {
   // initialize local storage
   // check if high scores exists in LS
   // if false then set high scores to empty array in LS
+  if (!localStorage.getItem("highscore")) {
+    localStorage.setItem("highscore", JSON.stringify(storeAnswers));
+  }
 };
 
 const removeStartSection = () => {
@@ -119,16 +126,34 @@ const validateAnswer = (event) => {
   }
 };
 
-const handleFormSubmit = () => {
-  // get value from input
-  // check if empty then render error alert with message and status
-  // if not empty then create the score object
-  // {
-  //   fullName: "Bob Smith",
-  //   score: 25
-  // }
-  // push score object to LS
-  // render quizCompleteSection
+const handleFormSubmit = (event) => {
+  //stop the default form submit
+  event.preventDefault();
+
+  //get the name from the form
+  let userName = document.getElementById("full-name").value;
+
+  if (userName === "") {
+    alert("Username is blank. Thus the score was not saved!");
+  } else {
+    const scoreObject = {
+      name: userName,
+      answers: correctAnswers,
+      questions: questionsList.length,
+      time: 10 * questionsList.length - timerValue,
+    };
+
+    //get the high score object
+    const storeItems = JSON.parse(localStorage.getItem("highscore"));
+    //ad a new object
+    storeItems.unshift(scoreObject);
+
+    //save in local storage
+    localStorage.setItem("highscore", JSON.stringify(storeItems));
+  }
+
+  //navigate to the high scores page
+  window.location.replace("./highscore.html");
 };
 
 const renderTimerSection = () => {
@@ -374,6 +399,13 @@ const renderForm = () => {
   //append div
   inputDiv.append(submitDiv);
 
+  //create a element
+  const submitAnchor = document.createElement("a");
+  //add attribute
+  submitAnchor.setAttribute("href", "./highscore.html");
+  //append a
+  submitDiv.append(submitAnchor);
+
   //create the submit button
   const submitButton = document.createElement("input");
   // add class attributes
@@ -381,7 +413,7 @@ const renderForm = () => {
   submitButton.setAttribute("type", "submit");
   submitButton.setAttribute("value", "Submit");
   //append button
-  submitDiv.append(submitButton);
+  submitAnchor.append(submitButton);
 
   //create the form answer div
   const submitAnswerDiv = document.createElement("div");
@@ -398,9 +430,13 @@ const renderForm = () => {
 
   // append section to main
   // add submit event handler to form
+  const submit = document.getElementById("submit-btn");
+  // add start button click event listener
+  submit.addEventListener("click", handleFormSubmit);
 };
 
-const renderQuizCompleteSection = () => {
+const highScoresSection = () => {
+  console.log("high score");
   // use HTML as guide and build in JS
   // append section to main
 };

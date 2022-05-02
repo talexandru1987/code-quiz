@@ -132,7 +132,8 @@ h2,
 .game-over-response,
 .form-section-score,
 .form-section-input-container > label,
-.submit {
+.submit,
+#high-score-no > td {
   padding: 10px;
   margin: 0px;
 }
@@ -150,7 +151,8 @@ h2,
 }
 
 .question-section-decision > p,
-.game-over-response > p {
+.game-over-response > p,
+#high-score-no > td {
   text-align: center;
 }
 
@@ -161,7 +163,8 @@ h2,
 
 /* form label text */
 .form-section-input-container > label,
-.submit > input {
+.submit > input,
+#high-score-no > td {
   font-size: 20px;
 }
 
