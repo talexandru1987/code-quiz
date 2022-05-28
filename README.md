@@ -31,6 +31,8 @@ THEN I can save my initials and my score
 
 ## Mock-Up
 
+Link to the deployed page:https://talexandru1987.github.io/code-quiz/
+
 The following pictures show the quiz application components:
 
 ![Start](./assets/img/start.png)
