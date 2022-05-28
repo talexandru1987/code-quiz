@@ -33,8 +33,8 @@ THEN I can save my initials and my score
 
 The following pictures show the quiz application components:
 
-![Start](./Assets/assets/img/start.png)
-![Question](./Assets/assets/img/questions.png)
-![Game Over](./Assets/assets/img/game-over.png)
-![Form](./Assets/assets/img/form.png)
-![High Score](./Assets/assets/img/high-score.png)
+![Start](./assets/img/start.png)
+![Question](./assets/img/questions.png)
+![Game Over](./assets/img/game-over.png)
+![Form](./assets/img/form.png)
+![High Score](./assets/img/high-score.png)
