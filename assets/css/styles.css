@@ -1,0 +1,193 @@
+/*style for the page body*/
+body {
+  margin: 0px;
+  background-color: #edf2f4;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/*style for the navigation bar*/
+.navigation-bar {
+  display: flex;
+  flex-direction: row;
+  background-color: #8d99ae;
+}
+
+.navigation-bar-item {
+  flex-grow: 2;
+  text-align: center;
+  padding: 20px;
+  border: solid 1px #2b2d42;
+  font-weight: bold;
+}
+
+.navigation-bar > div > a {
+  text-decoration: none;
+  color: #2b2d42;
+}
+
+.navigation-bar > div > a:hover {
+  color: #ef233c;
+  cursor: pointer;
+}
+
+/* Main content css*/
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+/*center the content*/
+.start-quiz,
+.timer-section,
+.question-section,
+.game-over,
+.form-section {
+  margin: auto;
+  padding: 20px;
+}
+
+.start-quiz-item,
+.form-section-score,
+.submit-result {
+  text-align: center;
+}
+
+#timer > p {
+  font-size: 30px;
+}
+
+/* button styles */
+button,
+#submit-btn {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #5adaff 0,
+    #5468ff 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+button:focus,
+#submit-btn:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+button:hover,
+#submit-btn:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+button:active,
+#submit-btn:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+/*Timer title*/
+
+h2,
+.form-section-score,
+.submit-result {
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+}
+
+h2,
+#timer > p,
+.question-section-question > p,
+.quest-section-options > li,
+.question-section-decision > p,
+.game-over-response,
+.form-section-score,
+.form-section-input-container > label,
+.submit,
+.high-score-no > td {
+  padding: 10px;
+  margin: 0px;
+}
+
+/* question section styles*/
+
+.question-section-question,
+.quest-section-options,
+.question-section-decision > p {
+  font-size: 30px;
+}
+
+.quest-section-options {
+  list-style-type: lower-latin;
+}
+
+.question-section-decision > p,
+.game-over-response > p,
+.high-score-no > td {
+  text-align: center;
+}
+
+.quest-section-options > li:hover {
+  cursor: pointer;
+  background-color: #bdbdbd;
+}
+
+/* form label text */
+.form-section-input-container > label,
+.submit > input,
+.high-score-no > td {
+  font-size: 20px;
+}
+
+.form-section-input-container > input {
+  height: 30px;
+  width: 200px;
+  border: 1px solid black;
+}
+/* submit button align */
+.submit,
+.form-section-input-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* mobile viewport styles */
+@media screen and (max-width: 900px) {
+  /* display as row on mobile*/
+  .navigation-bar {
+    flex-direction: column;
+  }
+
+  .navigation-bar-item {
+    padding: 10px;
+  }
+}
